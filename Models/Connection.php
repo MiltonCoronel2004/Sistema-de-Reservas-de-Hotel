@@ -1,12 +1,13 @@
 <?php
 
 class Connection {
+    // Establece los atributos de la case connection.
     private $host;
     private $username;
     private $password;
     private $database;
     public $connection;
-
+    // Se ejecuta un constructor para declarar las variables de la clase y se establece la conexion a la db.
     public function __construct($host , $username, $password, $database) {
         $this->host = $host;
         $this->username = $username;
@@ -16,7 +17,7 @@ class Connection {
    
   
     }
-
+    // Una funcion con modoficador de acceso publico para realizar consultar en otras clases.
     public function query($query) { 
         $result = mysqli_query($this->connection, $query);
         return $result;
