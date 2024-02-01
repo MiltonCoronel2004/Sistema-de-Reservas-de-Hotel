@@ -77,39 +77,36 @@
 
         <div class="col-6"> 
           <div class="div">
-						<table class="table table-stripped text-center">
-						  <thead>
-								<th>N°</th>
-								<th>Cliente</th>
-								<th>Habitacón N°</th>
-								<th>Entrada</th>
-								<th>Salida</th>
-							</thead>
-							<tbody>
-			
-								<?php
-									include("Models/Reservas.php");
-									$reserva = new Reserva("", "", "", "");
-									$result = $reserva->listarReservas();
+          <table class="table table-striped table-bordered text-center">
+            <thead class="table-dark">
+              <th>N°</th>
+              <th>Cliente</th>
+              <th>Habitación N°</th>
+              <th>Entrada</th>
+              <th>Salida</th>
+            </thead>
+            <tbody>
+                <?php
+                include("Models/Reservas.php");
+                $reserva = new Reserva("", "", "", "");
+                $result = $reserva->listarReservas();
 
-									while ($row = $result->fetch_assoc()) {
-										echo "<tr>";
-										echo "<td>{$row['id']}</td>";
-										echo "<td>{$row['cliente']}</td>";
-										echo "<td>{$row['habitacion']}</td>";
+                while ($row = $result->fetch_assoc()) {
+                    echo "<tr>";
+                    echo "<td>{$row['id']}</td>";
+                    echo "<td>{$row['cliente']}</td>";
+                    echo "<td>{$row['habitacion']}</td>";
 
-										$entradaFormatted = date('d/m/Y', strtotime($row['entrada']));
-										$salidaFormatted = date('d/m/Y', strtotime($row['salida']));
-								
-										echo "<td>{$entradaFormatted}</td>";
-										echo "<td>{$salidaFormatted}</td>";
-										echo "</tr>";
-										echo "</tr>";
-									}
-								?>
-					
-							</tbody>
-						</table>							
+                    $entradaFormatted = date('d/m/Y', strtotime($row['entrada']));
+                    $salidaFormatted = date('d/m/Y', strtotime($row['salida']));
+
+                    echo "<td>{$entradaFormatted}</td>";
+                    echo "<td>{$salidaFormatted}</td>";
+                    echo "</tr>";
+                }
+                ?>
+            </tbody>          
+            </table>							
           </div>
         </div>
        </div>
