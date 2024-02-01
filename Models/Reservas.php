@@ -18,9 +18,7 @@
     public function validarDisponibilidad($habitacion, $fechaEntrada, $fechaSalida) {
       $query = "SELECT * FROM reservas WHERE habitacion = '$habitacion' AND (entrada <= '$fechaSalida' AND salida >= '$fechaEntrada')";
 
-      // $fechaActual = new DateTime();
-      // $fechaEntradaObj = new DateTime($fechaEntrada);
-      // $fechaSalidaObj = new DateTime($fechaSalida);
+
 
       $resultado = $this->connection->query($query);
 
