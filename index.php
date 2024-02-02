@@ -28,21 +28,18 @@
                           <input type="text" name="cliente" required autocomplete="off" class="form-control">
                       </div>
                       <div class="mb-3">
-                          <label for="habitacion" class="form-label">Habitación</label>
-                          <select name="habitacion" required class="form-select">
-                              <option value="undefined">Seleccione una opción</option>
-                              <option value="200">200 - Individual</option>
-                              <option value="201">201 - Cuadruple</option>
-                              <option value="202">202 - Triple</option>
-                              <option value="203">203 - Suite</option>
-                              <option value="204">204 - Cuadruple</option>
-                              <option value="205">205 - Triple</option>
-                              <option value="206">206 - Indivudal</option>
-                              <option value="207">207 - Suite</option>
-                              <option value="209">208 - Doble</option>
-                              <option value="209">209 - Doble</option>
-                              <option value="210">210 - Indivudal</option>
-                          </select>
+                        <label for="habitacion" class="form-label">Habitación</label>
+                        <select name="habitacion" required class="form-select">
+                          <?php
+                            include("Models/reserva_habitaciones.php");
+                            $habitaciones = new Habitacion("", "", "");
+                            $result = $habitaciones->listarHabitaciones();
+
+                            while($row = $result->fetch_assoc()) {
+                              echo "<option value='{$row['numero']}'>{$row['numero']} - {$row['tipo']} - {$row['capacidad']}</option>";
+                            }
+                          ?>
+                        </select>
                       </div>
                       <div class="mb-3">
                           <label for="fechaEntrada" class="form-label">Fecha de Entrada</label>
@@ -87,7 +84,6 @@
             </thead>
             <tbody>
                 <?php
-                include("Models/Reservas.php");
                 $reserva = new Reserva("", "", "", "");
                 $result = $reserva->listarReservas();
 
