@@ -32,7 +32,7 @@
                         <select name="habitacion" required class="form-select">
                           <?php
                             include("Models/reserva_habitaciones.php");
-                            $habitaciones = new Habitacion("", "", "");
+                            $habitaciones = new Habitacion("");
                             $result = $habitaciones->listarHabitaciones();
 
                             while($row = $result->fetch_assoc()) {
