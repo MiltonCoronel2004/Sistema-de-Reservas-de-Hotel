@@ -49,7 +49,7 @@
 
       $resultado = $this->connection->query($query);
 
-      if (!$resultado->num_rows > 0 || $fechaEntrada > $fechaSalida) {
+      if ($resultado->num_rows == 0 || $fechaEntrada > $fechaSalida) {
           return false;
       } else {
           return true;
